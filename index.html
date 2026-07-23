@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Super Copa dos Streamers | EA FC Pro Clubs</title>
+<meta name="description" content="Super Copa dos Streamers - Campeonato EA FC Pro Clubs">
+<meta property="og:title" content="Super Copa dos Streamers">
+<meta property="og:description" content="Acompanhe participantes, chaveamento e novidades do campeonato.">
+<meta property="og:image" content="img/logo.png.jpeg">
+<link rel="icon" href="img/logo.png.jpeg">
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div id="particles"></div>
+
+<header>
+<nav>
+<div class="marca">
+<img src="img/logo.png.jpeg" alt="Logo">
+<h2>SUPER COPA</h2>
+</div>
+
+<div class="menu">
+<a href="#inicio">Início</a>
+<a href="#participantes">Players</a>
+<a href="#chaveamento">Chaveamento</a>
+<a href="#regras">Regras</a>
+</div>
+</nav>
+
+<section id="inicio" class="hero">
+<div class="hero-text">
+<span>🏆 CAMPEONATO OFICIAL</span>
+<h1>
+SUPER COPA
+<br>
+DOS STREAMERS
+</h1>
+<p>
+EA SPORTS FC • PRO CLUBS
+<br>
+Primeira Edição
+</p>
+
+<div class="contador">
+<div>
+<strong id="dias">00</strong>
+<small>Dias</small>
+</div>
+<div>
+<strong id="horas">00</strong>
+<small>Horas</small>
+</div>
+<div>
+<strong id="minutos">00</strong>
+<small>Min</small>
+</div>
+<div>
+<strong id="segundos">00</strong>
+<small>Seg</small>
+</div>
+</div>
+
+<div class="botoes">
+<a href="#chaveamento" class="btn ouro">🏆 Chaveamento</a>
+<a href="#participantes" class="btn">🎮 Participantes</a>
+</div>
+</div>
+
+<div class="hero-logo">
+<img src="img/logo.png.jpeg" alt="Logo Hero">
+</div>
+</section>
+</header>
+
+<main>
+<section id="participantes">
+<h2>🎮 Participantes</h2>
+
+<!-- TIME 1: ice-nuggets -->
+<div class="card time-card">
+    <img src="img/icenuggets.jpg" alt="Escudo do Time Ice Nuggets">
+
+    <h3>icenuggets</h3>
+
+    <p><strong>Responsável: Dona</strong></p>
+
+    <button class="btn-elenco" onclick="toggleElenco('time1')">
+        👥 Ver elenco
+    </button>
+
+    <button class="btn-torcida" onclick="votarTime('ice-nuggets')">
+        🔥 Torcer (<span id="votos-ice-nuggets">0</span>)
+    </button>
+
+    <div class="redes" style="margin-top:15px;">
+
+        <a href="https://www.instagram.com/ice_nugets_fc/" target="_blank">
+            📸 Instagram do time
+        </a>
+
+        <div class="live-box">
+            ⚫ OFFLINE
+            <a href="https://www.twitch.tv/dona" target="_blank">
+                📺 Assistir transmissão
+            </a>
+        </div>
+
+    </div>
+
+    <div id="time1" class="elenco">
+
+        <div class="jogador">
+            <img src="img/grm.jpg" alt="GRM">
+            <div class="info-jogador">
+                <strong>GRM-GOLEIRO</strong>
+                <a href="https://www.instagram.com/grmzinho/" target="_blank">📸 instagram</a>
+            </div>
+        </div>
+
+        <div class="jogador">
+            <img src="img/CAUA.jpg" alt="Caua">
+            <div class="info-jogador">
+                <strong>CAUA</strong>
+                <a href="https://www.instagram.com/caaua.s/" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+
+        <div class="jogador">
+            <img src="img/NZAO.jpg" alt="Norley">
+            <div class="info-jogador">
+                <strong>NORLEY</strong>
+                <a href="https://www.instagram.com/nzaotv/" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+
+        <div class="jogador">
+            <img src="img/LAIOBAS.jpg" alt="Laiobas">
+            <div class="info-jogador">
+                <strong>LAIOBAS</strong>
+                <a href="https://www.instagram.com/laiobas/" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+
+        <div class="jogador">
+            <img src="img/PIETRO.jpg" alt="Pietro">
+            <div class="info-jogador">
+                <strong>PIETRO KUN</strong>
+                <a href="https://www.instagram.com/pietro.ruan/" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+
+        <div class="jogador">
+            <img src="img/ASTRO.jpg" alt="Astro">
+            <div class="info-jogador">
+                <strong>00-C</strong>
+                <a href="https://www.instagram.com/astrox.ofc/" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+
+        <div class="jogador">
+            <img src="img/delta.jpg" alt="Delta">
+            <div class="info-jogador">
+                <strong>DELTA</strong>
+                <a href="https://www.instagram.com/deltaznn/" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+
+        <div class="jogador">
+            <img src="img/gustavin.jpg" alt="Gustavin">
+            <div class="info-jogador">
+                <strong>GUSTAVIN</strong>
+                <a href="https://www.instagram.com/gustavinzzl/" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+
+        <div class="jogador">
+            <img src="img/LORAX.jpg" alt="Lorax">
+            <div class="info-jogador">
+                <strong>LORAX</strong>
+                <a href="https://www.instagram.com/loraxstt/" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+
+        <div class="jogador">
+            <img src="img/dodo.jpg" alt="Dodo">
+            <div class="info-jogador">
+                <strong>BOSS-BRASILEÑO</strong>
+                <a href="https://instagram.com/dona19__" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+
+        <div class="jogador">
+            <img src="img/VVIEL.jpg" alt="Jogador 11">
+            <div class="info-jogador">
+                <strong>VVIEL</strong>
+                <a href="https://www.instagram.com/vitorviel_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D" target="_blank">📸Instagram</a>
+            </div>
+        </div>
+    </div> 
+</div>
+
+<!-- TIME 2: jeremy-corp -->
+<div class="card time-card">
+    <img src="img/jeremy corp.jpg" alt="Escudo do Time Jeremy Corp">
+
+    <h3>jeeremycorp</h3>
+
+    <p><strong>Responsável: Jeremy</strong></p>
+    <p><strong>Técnico: oj0ttave</strong></p>
+
+    <button class="btn-elenco" onclick="toggleElenco('time2')">
+        👥 Ver elenco
+    </button>
+
+    <button class="btn-torcida" onclick="votarTime('jeremy-corp')">
+        🔥 Torcer (<span id="votos-jeremy-corp">0</span>)
+    </button>
+
+    <div class="redes" style="margin-top:15px;">
+
+        <a href="https://www.instagram.com/jeeremycorp/" target="_blank">
+            📸 Instagram do time
+        </a>
+
+        <div class="live-box">
+            ⚫ OFFLINE
+            <a href="https://www.twitch.tv/jeereemy__" target="_blank">
+                📺 Assistir transmissão
+            </a>
+        </div>
+
+    </div>
+
+    <div id="time2" class="elenco">
+        <div class="jogador">
+            <img src="img/JOTAVE-TEC-JEREMY.jpg" alt="Jotave">
+            <div class="info-jogador">
+                <strong>JOTAVE-TEC</strong>
+                <a href="https://www.instagram.com/oj0ttave/" target="_blank">📸 Instagram</a>
+            </div>
+
+        </div>
+        <div class="jogador">
+            <img src="img/brenno-jeremy-ca" alt="Brenno">
+            <div class="info-jogador">
+                <strong>BRENNO-CA</strong>
+                <a href="https://www.instagram.com/alvs.brenn0/" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+
+        <div class="jogador">
+            <img src="img/GODVANNI-PD-JEREMY" alt="Godvanni">
+            <div class="info-jogador">
+                <strong>GODVANNI-PD</strong>
+                <a href="https://www.instagram.com/geovannibinatto/" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+
+        <div class="jogador">
+            <img src="img/SAULO-PE-JEREMY" alt="Saulo">
+            <div class="info-jogador">
+                <strong>SAULOSM-PE</strong>
+                <a href="https://www.instagram.com/saulo.smoura/" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+
+        <div class="jogador">
+            <img src="img/jeremy-MEI" alt="Jeremy">
+            <div class="info-jogador">
+                <strong>JEREMY-MEI</strong>
+                <a href="https://www.instagram.com/jeereemy____/" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+
+        <div class="jogador">
+            <img src="img/HTM-VOL-JEREMY" alt="HTM">
+            <div class="info-jogador">
+                <strong>HTM-VOL</strong>
+                <a href="https://www.instagram.com/tr1ndade__/" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+
+        <div class="jogador">
+            <img src="img/CIMINELLI021-VOL-JEREMY" alt="Ciminelli">
+            <div class="info-jogador">
+                <strong>CIMINELLI021-VOL</strong>
+                <a href="https://www.instagram.com/ciminelli._/" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+
+        <div class="jogador">
+            <img src="img/SQUAXY-VOL-RES-JEREMY.jpg" alt="Squaxy">
+            <div class="info-jogador">
+                <strong>SQUAXY-VOL-RES</strong>
+                <a href="https://www.instagram.com/lucasmdra_/" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+
+        <div class="jogador">
+            <img src="img/LUIZ-LE-JEREMY" alt="Luiz">
+            <div class="info-jogador">
+                <strong>LUIZ-LE</strong>
+                <a href="https://www.instagram.com/apenasluiz_/" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+
+        <div class="jogador">
+            <img src="img/ZAG-MURILOSTYSS-JEREMY" alt="Murilo">
+            <div class="info-jogador">
+                <strong>MURILOSTYSS-ZAG</strong>
+                <a href="https://www.instagram.com/murilowirtz/" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+
+        <div class="jogador">
+            <img src="img/LD-ZYNX-JEREMY" alt="Zynx">
+            <div class="info-jogador">
+                <strong>ZYNX-LD</strong>
+                <a href="https://instagram.com" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+
+        <div class="jogador">
+            <img src="img/lopesgoat-ld-zag-res-jeremy.jpeg" alt="Lopes">
+            <div class="info-jogador">
+                <strong>LOPESGOAT-LD/ZAG-RES</strong>
+                <a href="https://www.instagram.com/lopes.xis?igsh=dXRvMzAza3dhY3d1" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+
+        <div class="jogador">
+            <img src="img/alencar-gol-jeremy" alt="Alencar">
+            <div class="info-jogador">
+                <strong>ALENCAR-GOL</strong>
+                <a href="https://www.instagram.com/cauan.alencar/" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+
+        <div class="jogador">
+            <img src="img/IGOR-JEREMY-ATA-RES" alt="Reserva">
+            <div class="info-jogador">
+                <strong>IGOR-ATA-RES</strong>
+                <a href="https://www.instagram.com" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+
+        <div class="jogador">
+            <img src="img/lecker-zag-jeremy" alt="Zag">
+            <div class="info-jogador">
+                <strong>LECKER-ZAG</strong>
+                <a href="https://www.instagram.com" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+         <div class="jogador">
+            <img src="img/j.s1lv-MA-C-jeremy.jpg" alt="Zag">
+            <div class="info-jogador">
+                <strong>MA-RES-C</strong>
+                <a href="https://www.instagram.com/j.s1lv/" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- TIME 3: Loló-fc -->
+<div class="card time-card">
+    <img src="img/lolo-fc.jpg" alt="Escudo do Time 3">
+
+    <h3>loló-fc</h3>
+
+    <p><strong>Responsável: Snoopey</strong></p>
+
+    <button class="btn-elenco" onclick="toggleElenco('time3')">
+        👥 Ver elenco
+    </button>
+
+    <button class="btn-torcida" onclick="votarTime('lolo-fc')">
+        🔥 Torcer (<span id="votos-lolo-fc">0</span>)
+    </button>
+
+    <div class="redes" style="margin-top:15px;">
+
+        <a href="https://www.instagram.com/lolofc_oficial/" target="_blank">
+            📸 Instagram do time
+        </a>
+
+        <div class="live-box">
+            ⚫ OFFLINE
+            <a href="https://www.twitch.tv/snopey" target="_blank">
+                📺 Assistir transmissão
+            </a>
+        </div>
+
+    </div>
+
+
+    <div id="time3" class="elenco">
+        <div class="jogador">
+            <img src="img/onix-lolo-gol.jpg" alt="Jogador 1">
+            <div class="info-jogador">
+                <strong>ONIX- GOL</strong>
+                <a href="https://www.instagram.com/davidfrc.m/" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+        <div class="jogador">
+            <img src="img/CHININHA-LD-LOLO.jpg" alt="Jogador 2">
+            <div class="info-jogador">
+                <strong>CHININHA-LD</strong>
+                <a href="https://www.instagram.com/joao8dornbusch73/" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+        <div class="jogador">
+            <img src="img/suetam-zag-lolo.jpg" alt="Jogador 3">
+            <div class="info-jogador">
+                <strong>SUETAM-ZAG</strong>
+                <a href="https://www.instagram.com/suetam1v4/" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+        <div class="jogador">
+            <img src="img/CEWALK-ZAG-LOLO.jpg" alt="Jogador 4">
+            <div class="info-jogador">
+                <strong>CEWALK-ZAG</strong>
+                <a href="https://www.instagram.com/_guiil/" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+        <div class="jogador">
+            <img src="img/NEEXTY-LE-LOLO.jpg" alt="Jogador 5">
+            <div class="info-jogador">
+                <strong>NEEXTY-LE</strong>
+                <a href="https://www.instagram.com/kaikneexty/" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+        <div class="jogador">
+            <img src="img/WERICK-MC-LOLO.jpg" alt="Jogador 6">
+            <div class="info-jogador">
+                <strong>WERICK-MC</strong>
+                <a href="https://www.instagram.com/wericktx/" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+        <div class="jogador">
+            <img src="img/EUZAVA-MC-LOLO.jpg" alt="Jogador 7">
+            <div class="info-jogador">
+                <strong>EUZAVA-MC</strong>
+                <a href="https://www.instagram.com/euzava/" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+        <div class="jogador">
+            <img src="img/YAGO-MEI-LOLO.jpg" alt="Jogador 8">
+            <div class="info-jogador">
+                <strong>YAGO- MEI</strong>
+                <a href="https://www.instagram.com/xxgondim/" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+        <div class="jogador">
+            <img src="img/ARUK-PE-LOLO.jpg" alt="Jogador 9">
+            <div class="info-jogador">
+                <strong>ARUK-PE</strong>
+                <a href="https://www.instagram.com/arukzada/" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+        <div class="jogador">
+            <img src="img/snopey.jpg" alt="Jogador 10">
+            <div class="info-jogador">
+                <strong>SNOOPEY-ATA</strong>
+                <a href="https://www.instagram.com/snopeys/" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+        <div class="jogador">
+            <img src="img/FIREWALL-PD-LOLO.jpg" alt="Jogador 11">
+            <div class="info-jogador">
+                <strong>FIREWALL-PD</strong>
+                <a href="https://www.instagram.com/samuel019x/" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+    </div> 
+</div>
+
+<!-- TIME 4: Kosky-korp -->
+<div class="card time-card">
+    <img src="img/KOSKY.KORP.jpg" alt="Escudo do Time 4">
+
+    <h3>kosky korp</h3>
+
+    <p><strong>Responsável: Kosky</strong></p>
+    <p><strong>Técnico: Enzo Debablo</strong></p>
+
+    <button class="btn-elenco" onclick="toggleElenco('time4')">
+        👥 Ver elenco
+    </button>
+
+    <button class="btn-torcida" onclick="votarTime('kosky-korp')">
+        🔥 Torcer (<span id="votos-kosky-korp">0</span>)
+    </button>
+
+    <div class="redes" style="margin-top:15px;">
+
+        <a href="https://www.instagram.com/kosky.corp/" target="_blank">
+            📸 Instagram do time
+        </a>
+
+        <div class="live-box">
+            ⚫ OFFLINE
+            <a href="https://www.twitch.tv/kosky" target="_blank">
+                📺 Assistir transmissão
+            </a>
+        </div>
+
+    </div>
+
+<div id="time4" class="elenco">
+
+<div class="jogador">
+
+    <img src="img/ENZO-TEC-KOSKY.jpg" alt="Jogador 2">
+
+    <div class="info-jogador">
+        <strong>ENZO DEDABLO - TÉC</strong>
+
+        <a href="https://www.instagram.com/enzodedablo/" target="_blank">
+            📸 Instagram
+        </a>
+
+    </div>
+
+</div>
+        <div class="jogador">
+            <img src="img/CADU-ZAG-KOSKY.jpg" alt="Jogador 2">
+            <div class="info-jogador">
+                <strong>CADU-ZAG</strong>
+                <a href="https://www.instagram.com/cadu_sp07/" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+        <div class="jogador">
+            <img src="img/LEARK-ZAG-KOSKY.jpg" alt=Jogador 3>
+            <div class="info-jogador">
+                <strong>LEARK-ZAG</strong>
+                <a href="https://www.instagram.com/levirodrigues22/" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+        <div class="jogador">
+            <img src="img/IBATURCO-LD-KOSKY.jpg" alt="Jogador 4">
+            <div class="info-jogador">
+                <strong>IBATURCO-LD</strong>
+                <a href="https://www.instagram.com/ibaturco/" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+        <div class="jogador">
+            <img src="img/RLQUEM-LE-KOSKY.jpg" alt="Jogador 5">
+            <div class="info-jogador">
+                <strong>RLQUEM-LE</strong>
+                <a href="https://www.instagram.com/rlquem/" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+        <div class="jogador">
+            <img src="img/XWILLSOUZA-MC-KOSKY.jpg" alt="Jogador 6">
+            <div class="info-jogador">
+                <strong>XWILLSOUZA-MC</strong>
+                <a href="https://www.instagram.com/xwillsouza/" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+        <div class="jogador">
+            <img src="img/RLQUEM-LE-KOSKY.jpg" alt="Jogador 7">
+            <div class="info-jogador">
+                <strong>CHAGASLIGHT</strong>
+                <a href="https://www.instagram.com" target="_blank">📸Jogadores procurando o @...</a>
+            </div>
+        </div>
+        <div class="jogador">
+            <img src="img/THB-PD-KOSKY.jpg" alt="Jogador 8">
+            <div class="info-jogador">
+                <strong>CESARTHB-PD</strong>
+                <a href="https://www.instagram.com/cesarthb_/" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+        <div class="jogador">
+            <img src="img/kosky.jpg" alt="Jogador 9">
+            <div class="info-jogador">
+                <strong>KOSKY-PE</strong>
+                <a href="https://www.instagram.com/kosky_/" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+        <div class="jogador">
+            <img src="img/SEIOSCAP-ATA-KOSKY.jpg" alt="Jogador 10">
+            <div class="info-jogador">
+                <strong>SEIOSCAP-ATA</strong>
+                <a href="https://www.instagram.com/seioscap/" target="_blank">📸 Instagram</a>
+            </div>
+        </div>
+        <div class="jogador">
+            <img src="img/RLQUEM-LE-KOSKY.jpg" alt="Jogador 11">
+            <div class="info-jogador">
+                <strong>TURBION-ATA</strong>
+                <a href="https://www.instagram.com/vrxnzz/" target="_blank">📸Instagram</a>
+            </div>
+        </div>
+    </div> 
+</div>
+
+
+</section>
+
+<section id="chaveamento">
+<h2>🏆 Chaveamento</h2>
+<p class="descricao">Acompanhe os confrontos da Super Copa.</p>
+<div class="imagem-chaveamento">
+<img src="img/chaveamento.jpeg" alt="Chaveamento da Super Copa">
+</div>
+</section>
+
+<section id="regras">
+<h2>📜 Informações</h2>
+<div class="info">
+<div class="box">
+<h3>🎮 Plataforma</h3>
+<p>EA SPORTS FC</p>
+</div>
+<div class="box">
+<h3>⚽ Modo</h3>
+<p>Pro Clubs</p>
+</div>
+<div class="box">
+<h3>🏆 Formato</h3>
+<p>Eliminatória</p>
+</div>
+<div class="box">
+<h3>📅 Edição</h3>
+<p>Primeira Edição</p>
+</div>
+</div>
+</section>
+
+</main>
+
+<footer>
+<img src="img/logo.png.jpeg" alt="Logo Footer">
+<h2>SUPER COPA DOS STREAMERS</h2>
+<p>EA SPORTS FC • PRO CLUBS</p>
+<p>© 2026 Todos os direitos reservados.</p>
+<div class="card" style="margin-top: 20px; display: inline-block;">
+<img src="img/eu.jpg" alt="Siqueira">
+<h3>Siqueira</h3>
+<div class="redes">
+<a href="https://www.instagram.com/siqueir4.008/" target="_blank">📸 Instagram</a>
+</div>
+</div>
+</footer>
+
+<!-- CAIXINHA DE AVISO FLUTUANTE -->
+<div id="toast-voto">🔥 Obrigado por apoiar seu time!</div>
+
+<!-- MODAL DE ENTRADA (Com 3 segundos mínimos de leitura) -->
+<div id="modal-aviso" class="modal-overlay">
+    <div class="modal-content">
+        <h3>📢 ATENÇÃO</h3>
+        <p>Se você tem um time ou sabe o perfil dos jogadores dos times restantes, mande mensagem nessa conta:</p>
+        <p class="destaque-insta">@scds_2026</p>
+        <p>ou no perfil que está no final do site!</p>
+       <button id="btn-entendi" onclick="fecharAviso()">
+    Entendi
+</button>
+
+<!-- INICIALIZAÇÃO DO FIREBASE (CDN) -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
+  import { getFirestore } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBKb7sRnu0fgVSNhz1s3joZ8k52CPZ-GDw",
+    authDomain: "super-copa-dos-streamers.firebaseapp.com",
+    projectId: "super-copa-dos-streamers",
+    storageBucket: "super-copa-dos-streamers.firebasestorage.app",
+    messagingSenderId: "434645218615",
+    appId: "1:434645218615:web:bcb48f1d92642678b656b2",
+    measurementId: "G-KNJZ98EDVR"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  window.db = getFirestore(app);
+</script>
+
+<script type="module" src="script.js"></script>
+
+</body>
+</html>
