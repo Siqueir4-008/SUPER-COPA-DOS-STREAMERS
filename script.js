@@ -142,7 +142,11 @@ async function votarTime(time) {
 
         // CONTROLE DE VOTOS PELO FIREBASE
 
-const controleRef = doc(window.db, "controle-votos", "contador");
+const idUsuario = localStorage.getItem("idUsuario") || crypto.randomUUID();
+
+localStorage.setItem("idUsuario", idUsuario);
+
+const controleRef = doc(window.db, "controle-votos", idUsuario);
 
 const controleDoc = await getDoc(controleRef);
 
