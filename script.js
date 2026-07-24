@@ -241,6 +241,7 @@ function carregarVotos(){
 
 
     });
+    carregarRanking();
 
 }
 
@@ -277,3 +278,42 @@ function mostrarToast(mensagem){
 }
 
 
+async function carregarRanking() {
+
+    const { collection, getDocs } = await import("https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js");
+
+    const lista = await getDocs(collection(window.db, "times"));
+
+    let ranking = [];
+
+    lista.forEach((time) => {
+        ranking.push({
+            nome: time.id,
+            votos: time.data().votos || 0
+        });
+    });
+
+    ranking.sort((a, b) => b.votos - a.votos);
+
+    const div = document.getElementById("ranking-lista");
+
+    if (!div) return;
+
+    div.innerHTML = "";
+
+    ranking.forEach((time, index) => {
+
+        const medalha =
+            index === 0 ? "🥇" :
+            index === 1 ? "🥈" :
+            index === 2 ? "🥉" : `#${index + 1}`;
+
+        div.innerHTML += `
+            <div class="ranking-item">
+                <strong>${medalha} ${time.nome}</strong>
+                <span>${time.votos} votos</span>
+            </div>
+        `;
+    });
+
+}
