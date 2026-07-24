@@ -511,3 +511,67 @@ transform:scale(1.03);
 }
 
 }
+
+/* ===== CENTRAL DO CAMPEONATO ===== */
+
+.central-campeonato{
+    margin:60px auto;
+    max-width:1200px;
+    padding:0 20px;
+}
+
+.central-campeonato h2{
+    text-align:center;
+    color:#FFD700;
+    margin-bottom:30px;
+}
+
+.central-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.central-card{
+    background:#0d1628;
+    border:2px solid rgba(255,215,0,.15);
+    border-radius:18px;
+    padding:20px;
+    transition:.3s;
+    box-shadow:0 0 15px rgba(0,0,0,.25);
+}
+
+.central-card:hover{
+    transform:translateY(-5px);
+    border-color:#FFD700;
+}
+
+.central-card h3{
+    color:#FFD700;
+    margin-bottom:15px;
+    text-align:center;
+}
+
+#ranking-lista{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.ranking-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#111d33;
+    padding:10px 14px;
+    border-radius:10px;
+}
+
+.ranking-item strong{
+    color:#fff;
+}
+
+.ranking-item span{
+    color:#FFD700;
+    font-weight:bold;
+}
