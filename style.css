@@ -575,3 +575,18 @@ transform:scale(1.03);
     color:#FFD700;
     font-weight:bold;
 }
+
+.pesquisa-destaque{
+    animation:destaquePesquisa 1s infinite;
+    border-color:#ffd700 !important;
+    box-shadow:0 0 35px #ffd700;
+}
+
+
+@keyframes destaquePesquisa{
+
+50%{
+    transform:scale(1.03);
+}
+
+}
