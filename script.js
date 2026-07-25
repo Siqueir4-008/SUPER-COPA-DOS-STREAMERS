@@ -3,9 +3,6 @@
 // SCRIPT PRINCIPAL
 // ==============================
 
-
-// CONTADOR
-
 import {
     doc,
     updateDoc,
@@ -13,10 +10,11 @@ import {
     getDoc,
     setDoc
 } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
+
+// CONTADOR REGRESSIVO DO EVENTO
 const dataEvento = new Date("2026-07-26 20:00:00").getTime();
 
 function atualizarContador(){
-
     const agora = Date.now();
     const distancia = dataEvento - agora;
 
@@ -35,253 +33,159 @@ function atualizarContador(){
 
     document.getElementById("segundos").innerText =
     Math.floor((distancia % 60000) / 1000).toString().padStart(2,"0");
-
 }
 
-setInterval(atualizarContador,1000);
+setInterval(atualizarContador, 1000);
 atualizarContador();
 
 
-
-// ELENCO
-
+// MOSTRAR/OCULTAR ELENCO DO TIME
 function toggleElenco(id){
-
     const elemento = document.getElementById(id);
-
     if(!elemento) return;
-
 
     if(elemento.style.display === "block"){
         elemento.style.display = "none";
-    }else{
+    } else {
         elemento.style.display = "block";
     }
-
 }
-
 window.toggleElenco = toggleElenco;
 
 
-window.fecharAviso = fecharAviso;
+// TEMPO MÍNIMO DE LEITURA DO AVISO
+let tempoMinimo = 5;
 
-let segundosRestantes = 6;
+function iniciarContadorAviso() {
+    const btn = document.getElementById("btn-entendi");
+    const contadorSpan = document.getElementById("tempo-restante");
 
-window.addEventListener("DOMContentLoaded", () => {
-
-    const botao = document.getElementById("btn-entendi");
-
-    if (!botao) return;
-
-    botao.disabled = true;
-    botao.innerText = `Aguarde (${segundosRestantes}s)...`;
+    if (!btn || !contadorSpan) return;
 
     const intervalo = setInterval(() => {
-
-        segundosRestantes--;
-
-        if (segundosRestantes > 0) {
-
-            botao.innerText = `Aguarde (${segundosRestantes}s)...`;
-
+        tempoMinimo--;
+        if (tempoMinimo > 0) {
+            contadorSpan.innerText = tempoMinimo;
         } else {
-
             clearInterval(intervalo);
-
-            botao.disabled = false;
-            botao.innerText = "Entendi";
-
+            btn.disabled = false;
+            btn.innerText = "Entendi";
         }
-
     }, 1000);
+}
 
-});
-
-function fecharAviso() {
-
-    if (segundosRestantes > 0) return;
-
+// FECHAR MODAL DE AVISO
+function fecharAviso(){
     const modal = document.getElementById("modal-aviso");
-
-    if (modal) {
+    if(modal){
         modal.style.display = "none";
     }
-
 }
-
 window.fecharAviso = fecharAviso;
 
+// Inicia o contador assim que o DOM carregar
+document.addEventListener("DOMContentLoaded", iniciarContadorAviso);
+
+
 // FIREBASE VOTOS
-
-
-let ultimoClique = 0;
-
-
 async function votarTime(time) {
-
     const hoje = new Date().toISOString().split("T")[0];
 
-    let controle = JSON.parse(localStorage.getItem("controleVotos")) || {
-        data: hoje,
-        quantidade: 0
-    };
-
-    
-
-    // Se mudou o dia, reseta
-    if (controle.data !== hoje) {
-        controle = {
-            data: hoje,
-            quantidade: 0
-        };
-    }
-
-    
-
     try {
+        const idUsuario = localStorage.getItem("idUsuario") || crypto.randomUUID();
+        localStorage.setItem("idUsuario", idUsuario);
 
-        // CONTROLE DE VOTOS PELO FIREBASE
+        const controleRef = doc(window.db, "controle-votos", idUsuario);
+        const controleDoc = await getDoc(controleRef);
 
-const idUsuario = localStorage.getItem("idUsuario") || crypto.randomUUID();
-
-localStorage.setItem("idUsuario", idUsuario);
-
-const controleRef = doc(window.db, "controle-votos", idUsuario);
-
-const controleDoc = await getDoc(controleRef);
-
-let dadosControle = {
-    data: hoje,
-    quantidade: 0
-};
-
-if (controleDoc.exists()) {
-    dadosControle = controleDoc.data();
-
-    if (dadosControle.data !== hoje) {
-        dadosControle = {
+        let dadosControle = {
             data: hoje,
             quantidade: 0
         };
-    }
-}
 
+        if (controleDoc.exists()) {
+            dadosControle = controleDoc.data();
 
-// LIMITE DE VOTOS
-if (dadosControle.quantidade >= 15) {
-    mostrarToast("⚠️ Você já usou seus 15 votos de hoje!");
-    return;
-}
+            if (dadosControle.data !== hoje) {
+                dadosControle = {
+                    data: hoje,
+                    quantidade: 0
+                };
+            }
+        }
 
-        const votoRef=doc(window.db, "times",time);
+        // LIMITE DE VOTOS
+        if (dadosControle.quantidade >= 15) {
+            mostrarToast("⚠️ Você já usou seus 15 votos de hoje!");
+            return;
+        }
+
+        const votoRef = doc(window.db, "times", time);
 
         await updateDoc(votoRef, {
             votos: increment(1)
         });
 
-        // Salva controle no navegador
         dadosControle.quantidade++;
+        await setDoc(controleRef, dadosControle);
 
-await setDoc(controleRef, dadosControle);
         mostrarToast("🔥 Voto registrado!");
-
         carregarVotos();
 
     } catch (erro) {
-    console.error(erro);
-    alert(erro.message);
+        console.error(erro);
+        alert(erro.message);
+    }
 }
-}
-
-
-
 window.votarTime = votarTime;
 
 
-
 // CARREGAR VOTOS
-
-
 function carregarVotos(){
-
     import("https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js")
-    .then(({collection, onSnapshot})=>{
-
-
+    .then(({collection, onSnapshot}) => {
         onSnapshot(
-            collection(window.db,"times"),
-            (lista)=>{
-
-
-                lista.forEach((doc)=>{
-
-
+            collection(window.db, "times"),
+            (lista) => {
+                lista.forEach((doc) => {
                     const dados = doc.data();
-
-
-                    const contador =
-                    document.getElementById(
-                    "votos-"+doc.id
-                    );
-
+                    const contador = document.getElementById("votos-" + doc.id);
 
                     if(contador){
-
-                        contador.innerText =
-                        dados.votos || 0;
-
+                        contador.innerText = dados.votos || 0;
                     }
-
-
                 });
-
-
             }
         );
-
-
     });
+
     carregarRanking();
-
 }
 
-
-setTimeout(()=>{
-
-if(window.db){
-
-carregarVotos();
-
-}
-
-},2000);
+setTimeout(() => {
+    if(window.db){
+        carregarVotos();
+    }
+}, 2000);
 
 
-// TOAST
-
+// TOAST DE NOTIFICAÇÃO
 function mostrarToast(mensagem){
-
     const toast = document.getElementById("toast-voto");
-
     if(!toast) return;
 
     toast.innerText = mensagem;
-
     toast.classList.add("mostrar");
 
-    setTimeout(()=>{
-
+    setTimeout(() => {
         toast.classList.remove("mostrar");
-
-    },2500);
-
+    }, 2500);
 }
 
 
+// CARREGAR RANKING DE TORCIDAS
 async function carregarRanking() {
-
     const { collection, getDocs } = await import("https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js");
-
     const lista = await getDocs(collection(window.db, "times"));
 
     let ranking = [];
@@ -296,13 +200,11 @@ async function carregarRanking() {
     ranking.sort((a, b) => b.votos - a.votos);
 
     const div = document.getElementById("ranking-lista");
-
     if (!div) return;
 
     div.innerHTML = "";
 
     ranking.forEach((time, index) => {
-
         const medalha =
             index === 0 ? "🥇" :
             index === 1 ? "🥈" :
@@ -315,149 +217,4 @@ async function carregarRanking() {
             </div>
         `;
     });
-
 }
-
-
-
-
-    const cards = document.querySelectorAll(".time-card");
-
-
-    cards.forEach(card=>{
-
-        const conteudo = card.innerText.toLowerCase();
-
-
-        let links = "";
-
-        card.querySelectorAll("a").forEach(link=>{
-            links += " " + link.href.toLowerCase();
-        });
-
-
-        if(
-            conteudo.includes(texto) ||
-            links.includes(texto)
-        ){
-
-            resultadosAtuais.push(card);
-
-
-            const nome =
-            card.querySelector("h3")?.innerText || "Resultado";
-
-
-            const item = document.createElement("div");
-
-            item.className="resultado-item";
-
-            item.innerHTML =
-            `<strong>${nome}</strong>`;
-
-
-            item.onclick = ()=>abrirResultado(card);
-
-
-            resultado.appendChild(item);
-
-        }
-
-    });
-
-
-    resultado.style.display =
-    resultadosAtuais.length ? "block" : "none";
-
-
-
-
-
-function abrirResultado(card){
-
-
-    resultado.style.display="none";
-
-    pesquisa.value="";
-
-
-    card.scrollIntoView({
-        behavior:"smooth",
-        block:"center"
-    });
-
-
-    const elenco =
-    card.querySelector(".elenco");
-
-
-    if(elenco){
-        elenco.style.display="block";
-    }
-
-
-    card.classList.add("pesquisa-destaque");
-
-
-    setTimeout(()=>{
-
-        card.classList.remove("pesquisa-destaque");
-
-    },3000);
-
-}
-
-const pesquisa = document.getElementById("pesquisa");
-const resultado = document.getElementById("resultado-pesquisa");
-let resultadosAtuais = [];
-
-function pesquisar(){
-
-    const texto = pesquisa.value.toLowerCase();
-
-    resultadosAtuais = [];
-    resultado.innerHTML = "";
-
-    document.querySelectorAll(".time-card").forEach(card=>{
-
-        const conteudo = card.innerText.toLowerCase();
-
-        if(conteudo.includes(texto)){
-
-            resultadosAtuais.push(card);
-
-            resultado.innerHTML += `
-            <div class="resultado-item">
-            ${card.querySelector("h3").innerText}
-            </div>
-            `;
-        }
-
-    });
-
-    resultado.style.display =
-    resultadosAtuais.length ? "block" : "none";
-}
-
-pesquisa.addEventListener("input", pesquisar);
-
-
-
-pesquisa.addEventListener("keydown",(e)=>{
-
-
-    if(e.key === "Enter"){
-
-        e.preventDefault();
-
-
-        if(resultadosAtuais.length){
-
-            abrirResultado(resultadosAtuais[0]);
-
-        }
-
-    }
-
-
-});
