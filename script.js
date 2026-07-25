@@ -317,3 +317,147 @@ async function carregarRanking() {
     });
 
 }
+
+
+
+
+    const cards = document.querySelectorAll(".time-card");
+
+
+    cards.forEach(card=>{
+
+        const conteudo = card.innerText.toLowerCase();
+
+
+        let links = "";
+
+        card.querySelectorAll("a").forEach(link=>{
+            links += " " + link.href.toLowerCase();
+        });
+
+
+        if(
+            conteudo.includes(texto) ||
+            links.includes(texto)
+        ){
+
+            resultadosAtuais.push(card);
+
+
+            const nome =
+            card.querySelector("h3")?.innerText || "Resultado";
+
+
+            const item = document.createElement("div");
+
+            item.className="resultado-item";
+
+            item.innerHTML =
+            `<strong>${nome}</strong>`;
+
+
+            item.onclick = ()=>abrirResultado(card);
+
+
+            resultado.appendChild(item);
+
+        }
+
+    });
+
+
+    resultado.style.display =
+    resultadosAtuais.length ? "block" : "none";
+
+
+
+
+
+function abrirResultado(card){
+
+
+    resultado.style.display="none";
+
+    pesquisa.value="";
+
+
+    card.scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+    });
+
+
+    const elenco =
+    card.querySelector(".elenco");
+
+
+    if(elenco){
+        elenco.style.display="block";
+    }
+
+
+    card.classList.add("pesquisa-destaque");
+
+
+    setTimeout(()=>{
+
+        card.classList.remove("pesquisa-destaque");
+
+    },3000);
+
+}
+
+const pesquisa = document.getElementById("pesquisa");
+const resultado = document.getElementById("resultado-pesquisa");
+let resultadosAtuais = [];
+
+function pesquisar(){
+
+    const texto = pesquisa.value.toLowerCase();
+
+    resultadosAtuais = [];
+    resultado.innerHTML = "";
+
+    document.querySelectorAll(".time-card").forEach(card=>{
+
+        const conteudo = card.innerText.toLowerCase();
+
+        if(conteudo.includes(texto)){
+
+            resultadosAtuais.push(card);
+
+            resultado.innerHTML += `
+            <div class="resultado-item">
+            ${card.querySelector("h3").innerText}
+            </div>
+            `;
+        }
+
+    });
+
+    resultado.style.display =
+    resultadosAtuais.length ? "block" : "none";
+}
+
+pesquisa.addEventListener("input", pesquisar);
+
+
+
+pesquisa.addEventListener("keydown",(e)=>{
+
+
+    if(e.key === "Enter"){
+
+        e.preventDefault();
+
+
+        if(resultadosAtuais.length){
+
+            abrirResultado(resultadosAtuais[0]);
+
+        }
+
+    }
+
+
+});
