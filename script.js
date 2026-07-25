@@ -54,7 +54,7 @@ window.toggleElenco = toggleElenco;
 
 
 // TEMPO MÍNIMO DE LEITURA DO AVISO
-let tempoMinimo = 5;
+let tempoMinimo = 9;
 
 function iniciarContadorAviso() {
     const btn = document.getElementById("btn-entendi");
